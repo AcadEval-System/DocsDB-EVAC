@@ -4,11 +4,11 @@ TechnicalCareers
 Competencies
 EvaluationPeriods
 Professors
+Subjects
 Students
 ProfessorCompetencyAssignments
 FormQuestions
 StudentCompetencyEvaluations
-Subjects
 AspNetRoleClaims
 AspNetUserClaims
 AspNetUserLogins

@@ -131,32 +131,10 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="ProfessorId">ProfessorId</span></td>
-                                    <td>text</td>
-                                    <td>2147483647</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>&#39;&#39;::text</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                            <tr>
-                                                <td title="ProfessorCompetencyAssignments.ProfessorId references Professors.UserId via FK_ProfessorCompetencyAssignments_Professors_ProfessorId"><a href='Professors.html'>Professors</a><span class='relatedKey'>.UserId</span></td>
-                                                <td class="constraint detail">FK_ProfessorCompetencyAssignments_Professors_ProfessorId</td>
-                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
                                     <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="TechnicalCareerId">TechnicalCareerId</span></td>
                                     <td>uuid</td>
                                     <td>2147483647</td>
-                                    <td title=''></td>
+                                    <td title='nullable'>√</td>
                                     <td title=''></td>
                                     <td>&#39;00000000-0000-0000-0000-000000000000&#39;::uuid</td>
                                     <td>
@@ -168,25 +146,8 @@
                                             <tr>
                                                 <td title="ProfessorCompetencyAssignments.TechnicalCareerId references TechnicalCareers.Id via FK_ProfessorCompetencyAssignments_TechnicalCareers_TechnicalCa~"><a href='TechnicalCareers.html'>TechnicalCareers</a><span class='relatedKey'>.Id</span></td>
                                                 <td class="constraint detail">FK_ProfessorCompetencyAssignments_TechnicalCareers_TechnicalCa~</td>
-                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="Year">Year</span></td>
-                                    <td>int4</td>
-                                    <td>10</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
                                     <td></td>
@@ -330,6 +291,50 @@
                                     </td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="ProfessorUserId">ProfessorUserId</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="ProfessorCompetencyAssignments.ProfessorUserId references Professors.UserId via FK_ProfessorCompetencyAssignments_Professors_ProfessorUserId"><a href='Professors.html'>Professors</a><span class='relatedKey'>.UserId</span></td>
+                                                <td class="constraint detail">FK_ProfessorCompetencyAssignments_Professors_ProfessorUserId</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="SubjectId">SubjectId</span></td>
+                                    <td>uuid</td>
+                                    <td>2147483647</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>&#39;00000000-0000-0000-0000-000000000000&#39;::uuid</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="ProfessorCompetencyAssignments.SubjectId references Subjects.Id via FK_ProfessorCompetencyAssignments_Subjects_SubjectId"><a href='Subjects.html'>Subjects</a><span class='relatedKey'>.Id</span></td>
+                                                <td class="constraint detail">FK_ProfessorCompetencyAssignments_Subjects_SubjectId</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -385,10 +390,16 @@
                                     <td>EvaluationPeriodId</td>
                                 </tr>
                                 <tr>
-                                    <td title='Indexed'>IX_ProfessorCompetencyAssignments_ProfessorId</td>
+                                    <td title='Indexed'>IX_ProfessorCompetencyAssignments_ProfessorUserId</td>
                                     <td>Performance</td>
                                     <td><span title='Ascending'>Asc</span></td>
-                                    <td>ProfessorId</td>
+                                    <td>ProfessorUserId</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>IX_ProfessorCompetencyAssignments_SubjectId</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>SubjectId</td>
                                 </tr>
                                 <tr>
                                     <td title='Indexed'>IX_ProfessorCompetencyAssignments_TechnicalCareerId</td>

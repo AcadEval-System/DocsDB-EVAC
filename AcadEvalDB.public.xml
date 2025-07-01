@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database name="AcadEvalDB" schema="public" type="PostgreSQL - 16.9 (Debian 16.9-1.pgdg120+1)">
    <tables>
-      <table name="__EFMigrationsHistory" numRows="6" remarks="" schema="public" type="TABLE">
+      <table name="__EFMigrationsHistory" numRows="7" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="MigrationId" nullable="false" remarks="" size="150" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ProductVersion" nullable="false" remarks="" size="32" type="varchar" typeCode="12"/>
          <primaryKey column="MigrationId" sequenceNumberInPK="1"/>
@@ -23,7 +23,7 @@
             <column ascending="true" name="RoleId"/>
          </index>
       </table>
-      <table name="AspNetRoles" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="AspNetRoles" numRows="4" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="Id" nullable="false" remarks="" size="2147483647" type="text" typeCode="12">
             <child column="RoleId" foreignKey="FK_AspNetRoleClaims_AspNetRoles_RoleId" implied="false" onDeleteCascade="true" schema="public" table="AspNetRoleClaims"/>
             <child column="RoleId" foreignKey="FK_AspNetUserRoles_AspNetRoles_RoleId" implied="false" onDeleteCascade="true" schema="public" table="AspNetUserRoles"/>
@@ -71,7 +71,7 @@
             <column ascending="true" name="UserId"/>
          </index>
       </table>
-      <table name="AspNetUserRoles" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="AspNetUserRoles" numRows="1" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="UserId" nullable="false" remarks="" size="2147483647" type="text" typeCode="12">
             <parent column="Id" foreignKey="FK_AspNetUserRoles_AspNetUsers_UserId" implied="false" onDeleteCascade="true" schema="public" table="AspNetUsers"/>
          </column>
@@ -88,7 +88,7 @@
             <column ascending="true" name="RoleId"/>
          </index>
       </table>
-      <table name="AspNetUsers" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="AspNetUsers" numRows="1" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="Id" nullable="false" remarks="" size="2147483647" type="text" typeCode="12">
             <child column="UserId" foreignKey="FK_AspNetUserClaims_AspNetUsers_UserId" implied="false" onDeleteCascade="true" schema="public" table="AspNetUserClaims"/>
             <child column="UserId" foreignKey="FK_AspNetUserLogins_AspNetUsers_UserId" implied="false" onDeleteCascade="true" schema="public" table="AspNetUserLogins"/>
@@ -162,7 +162,7 @@
             <column ascending="true" name="Name"/>
          </index>
       </table>
-      <table name="Competencies" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="Competencies" numRows="5" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="Id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <child column="CompetencyId" foreignKey="FK_CompetencyLevelDescriptions_Competencies_CompetencyId" implied="false" onDeleteCascade="true" schema="public" table="CompetencyLevelDescriptions"/>
             <child column="CompetenciesId" foreignKey="FK_CompetencyTechnicalCareer_Competencies_CompetenciesId" implied="false" onDeleteCascade="true" schema="public" table="CompetencyTechnicalCareer"/>
@@ -192,7 +192,7 @@
             <column ascending="true" name="UpdatedByUserId"/>
          </index>
       </table>
-      <table name="CompetencyLevelDescriptions" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="CompetencyLevelDescriptions" numRows="20" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="Id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="CompetencyId" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <parent column="Id" foreignKey="FK_CompetencyLevelDescriptions_Competencies_CompetencyId" implied="false" onDeleteCascade="true" schema="public" table="Competencies"/>
@@ -339,27 +339,29 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="Id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <child column="ProfessorCompetencyAssignmentId" foreignKey="FK_StudentCompetencyEvaluations_ProfessorCompetencyAssignments~" implied="false" onDeleteCascade="false" schema="public" table="StudentCompetencyEvaluations"/>
          </column>
-         <column autoUpdated="false" defaultValue="''::text" digits="0" id="1" name="ProfessorId" nullable="false" remarks="" size="2147483647" type="text" typeCode="12">
-            <parent column="UserId" foreignKey="FK_ProfessorCompetencyAssignments_Professors_ProfessorId" implied="false" onDeleteCascade="true" schema="public" table="Professors"/>
+         <column autoUpdated="false" defaultValue="'00000000-0000-0000-0000-000000000000'::uuid" digits="0" id="1" name="TechnicalCareerId" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="Id" foreignKey="FK_ProfessorCompetencyAssignments_TechnicalCareers_TechnicalCa~" implied="false" onDeleteCascade="false" schema="public" table="TechnicalCareers"/>
          </column>
-         <column autoUpdated="false" defaultValue="'00000000-0000-0000-0000-000000000000'::uuid" digits="0" id="2" name="TechnicalCareerId" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
-            <parent column="Id" foreignKey="FK_ProfessorCompetencyAssignments_TechnicalCareers_TechnicalCa~" implied="false" onDeleteCascade="true" schema="public" table="TechnicalCareers"/>
-         </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="Year" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="'00000000-0000-0000-0000-000000000000'::uuid" digits="0" id="4" name="CompetencyId" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+         <column autoUpdated="false" defaultValue="'00000000-0000-0000-0000-000000000000'::uuid" digits="0" id="2" name="CompetencyId" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <parent column="Id" foreignKey="FK_ProfessorCompetencyAssignments_Competencies_CompetencyId" implied="false" onDeleteCascade="true" schema="public" table="Competencies"/>
          </column>
-         <column autoUpdated="false" defaultValue="'00000000-0000-0000-0000-000000000000'::uuid" digits="0" id="5" name="EvaluationPeriodId" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+         <column autoUpdated="false" defaultValue="'00000000-0000-0000-0000-000000000000'::uuid" digits="0" id="3" name="EvaluationPeriodId" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <parent column="Id" foreignKey="FK_ProfessorCompetencyAssignments_EvaluationPeriods_Evaluation~" implied="false" onDeleteCascade="true" schema="public" table="EvaluationPeriods"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="IsActive" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
-         <column autoUpdated="false" defaultValue="null" digits="6" id="7" name="CreatedAt" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="6" id="8" name="UpdatedAt" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="CreatedByUserId" nullable="true" remarks="" size="2147483647" type="text" typeCode="12">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="IsActive" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="5" name="CreatedAt" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="6" name="UpdatedAt" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="CreatedByUserId" nullable="true" remarks="" size="2147483647" type="text" typeCode="12">
             <parent column="Id" foreignKey="FK_ProfessorCompetencyAssignments_AspNetUsers_CreatedByUserId" implied="false" onDeleteCascade="false" schema="public" table="AspNetUsers"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="UpdatedByUserId" nullable="true" remarks="" size="2147483647" type="text" typeCode="12">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="UpdatedByUserId" nullable="true" remarks="" size="2147483647" type="text" typeCode="12">
             <parent column="Id" foreignKey="FK_ProfessorCompetencyAssignments_AspNetUsers_UpdatedByUserId" implied="false" onDeleteCascade="false" schema="public" table="AspNetUsers"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="ProfessorUserId" nullable="true" remarks="" size="2147483647" type="text" typeCode="12">
+            <parent column="UserId" foreignKey="FK_ProfessorCompetencyAssignments_Professors_ProfessorUserId" implied="false" onDeleteCascade="false" schema="public" table="Professors"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'00000000-0000-0000-0000-000000000000'::uuid" digits="0" id="10" name="SubjectId" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="Id" foreignKey="FK_ProfessorCompetencyAssignments_Subjects_SubjectId" implied="false" onDeleteCascade="false" schema="public" table="Subjects"/>
          </column>
          <primaryKey column="Id" sequenceNumberInPK="1"/>
          <index name="PK_ProfessorCompetencyAssignments" unique="true">
@@ -374,8 +376,11 @@
          <index name="IX_ProfessorCompetencyAssignments_EvaluationPeriodId" unique="false">
             <column ascending="true" name="EvaluationPeriodId"/>
          </index>
-         <index name="IX_ProfessorCompetencyAssignments_ProfessorId" unique="false">
-            <column ascending="true" name="ProfessorId"/>
+         <index name="IX_ProfessorCompetencyAssignments_ProfessorUserId" unique="false">
+            <column ascending="true" name="ProfessorUserId"/>
+         </index>
+         <index name="IX_ProfessorCompetencyAssignments_SubjectId" unique="false">
+            <column ascending="true" name="SubjectId"/>
          </index>
          <index name="IX_ProfessorCompetencyAssignments_TechnicalCareerId" unique="false">
             <column ascending="true" name="TechnicalCareerId"/>
@@ -386,7 +391,7 @@
       </table>
       <table name="Professors" numRows="0" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="UserId" nullable="false" remarks="" size="2147483647" type="text" typeCode="12">
-            <child column="ProfessorId" foreignKey="FK_ProfessorCompetencyAssignments_Professors_ProfessorId" implied="false" onDeleteCascade="true" schema="public" table="ProfessorCompetencyAssignments"/>
+            <child column="ProfessorUserId" foreignKey="FK_ProfessorCompetencyAssignments_Professors_ProfessorUserId" implied="false" onDeleteCascade="false" schema="public" table="ProfessorCompetencyAssignments"/>
             <child column="ProfessorId" foreignKey="FK_Subjects_Professors_ProfessorId" implied="false" onDeleteCascade="false" schema="public" table="Subjects"/>
             <parent column="Id" foreignKey="FK_Professors_AspNetUsers_UserId" implied="false" onDeleteCascade="true" schema="public" table="AspNetUsers"/>
          </column>
@@ -455,8 +460,10 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="UpdatedByUserId" nullable="true" remarks="" size="2147483647" type="text" typeCode="12">
             <parent column="Id" foreignKey="FK_StudentCompetencyEvaluations_AspNetUsers_UpdatedByUserId" implied="false" onDeleteCascade="false" schema="public" table="AspNetUsers"/>
          </column>
-         <column autoUpdated="false" defaultValue="0" digits="0" id="12" name="CareerYear" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="CompetencyLevel" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="CompetencyLevel" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="'00000000-0000-0000-0000-000000000000'::uuid" digits="0" id="13" name="SubjectId" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <parent column="Id" foreignKey="FK_StudentCompetencyEvaluations_Subjects_SubjectId" implied="false" onDeleteCascade="false" schema="public" table="Subjects"/>
+         </column>
          <primaryKey column="Id" sequenceNumberInPK="1"/>
          <index name="PK_StudentCompetencyEvaluations" unique="true">
             <column ascending="true" name="Id"/>
@@ -469,6 +476,9 @@
          </index>
          <index name="IX_StudentCompetencyEvaluations_StudentId" unique="false">
             <column ascending="true" name="StudentId"/>
+         </index>
+         <index name="IX_StudentCompetencyEvaluations_SubjectId" unique="false">
+            <column ascending="true" name="SubjectId"/>
          </index>
          <index name="IX_StudentCompetencyEvaluations_UpdatedByUserId" unique="false">
             <column ascending="true" name="UpdatedByUserId"/>
@@ -566,6 +576,8 @@
       </table>
       <table name="Subjects" numRows="0" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="Id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
+            <child column="SubjectId" foreignKey="FK_ProfessorCompetencyAssignments_Subjects_SubjectId" implied="false" onDeleteCascade="false" schema="public" table="ProfessorCompetencyAssignments"/>
+            <child column="SubjectId" foreignKey="FK_StudentCompetencyEvaluations_Subjects_SubjectId" implied="false" onDeleteCascade="false" schema="public" table="StudentCompetencyEvaluations"/>
             <child column="SubjectId" foreignKey="FK_StudentSubjects_Subjects_SubjectId" implied="false" onDeleteCascade="false" schema="public" table="StudentSubjects"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="Name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
@@ -602,12 +614,12 @@
             <column ascending="true" name="UpdatedByUserId"/>
          </index>
       </table>
-      <table name="TechnicalCareers" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="TechnicalCareers" numRows="6" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="Id" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111">
             <child column="TechnicalCareersId" foreignKey="FK_CompetencyTechnicalCareer_TechnicalCareers_TechnicalCareers~" implied="false" onDeleteCascade="true" schema="public" table="CompetencyTechnicalCareer"/>
             <child column="TechnicalCareerId" foreignKey="FK_Coordinators_TechnicalCareers_TechnicalCareerId" implied="false" onDeleteCascade="false" schema="public" table="Coordinators"/>
             <child column="TechnicalCareersId" foreignKey="FK_EvaluationPeriodTechnicalCareer_TechnicalCareers_TechnicalC~" implied="false" onDeleteCascade="true" schema="public" table="EvaluationPeriodTechnicalCareer"/>
-            <child column="TechnicalCareerId" foreignKey="FK_ProfessorCompetencyAssignments_TechnicalCareers_TechnicalCa~" implied="false" onDeleteCascade="true" schema="public" table="ProfessorCompetencyAssignments"/>
+            <child column="TechnicalCareerId" foreignKey="FK_ProfessorCompetencyAssignments_TechnicalCareers_TechnicalCa~" implied="false" onDeleteCascade="false" schema="public" table="ProfessorCompetencyAssignments"/>
             <child column="TechnicalCareerId" foreignKey="FK_Students_TechnicalCareers_TechnicalCareerId" implied="false" onDeleteCascade="false" schema="public" table="Students"/>
             <child column="TechnicalCareerId" foreignKey="FK_Subjects_TechnicalCareers_TechnicalCareerId" implied="false" onDeleteCascade="false" schema="public" table="Subjects"/>
          </column>

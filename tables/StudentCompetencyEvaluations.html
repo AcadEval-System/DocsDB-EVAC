@@ -338,23 +338,6 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="CareerYear">CareerYear</span></td>
-                                    <td>int4</td>
-                                    <td>10</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>0</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
                                     <td><span id="CompetencyLevel">CompetencyLevel</span></td>
                                     <td>int4</td>
                                     <td>10</td>
@@ -367,6 +350,28 @@
                                     </td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="SubjectId">SubjectId</span></td>
+                                    <td>uuid</td>
+                                    <td>2147483647</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>&#39;00000000-0000-0000-0000-000000000000&#39;::uuid</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="StudentCompetencyEvaluations.SubjectId references Subjects.Id via FK_StudentCompetencyEvaluations_Subjects_SubjectId"><a href='Subjects.html'>Subjects</a><span class='relatedKey'>.Id</span></td>
+                                                <td class="constraint detail">FK_StudentCompetencyEvaluations_Subjects_SubjectId</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
                                         </table>
                                     </td>
                                     <td></td>
@@ -424,6 +429,12 @@
                                     <td>Performance</td>
                                     <td><span title='Ascending'>Asc</span></td>
                                     <td>StudentId</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>IX_StudentCompetencyEvaluations_SubjectId</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>SubjectId</td>
                                 </tr>
                                 <tr>
                                     <td title='Indexed'>IX_StudentCompetencyEvaluations_UpdatedByUserId</td>

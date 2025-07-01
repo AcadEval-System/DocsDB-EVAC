@@ -11,11 +11,11 @@ AspNetUserTokens
 AspNetUserLogins
 AspNetUserClaims
 AspNetRoleClaims
-Subjects
 StudentCompetencyEvaluations
 FormQuestions
 ProfessorCompetencyAssignments
 Students
+Subjects
 Professors
 EvaluationPeriods
 Competencies
